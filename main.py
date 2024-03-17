@@ -24,9 +24,9 @@ class Item(BaseModel):
     query: str
     
 
-@app.post("/items/")
+@app.post("/v1/")
 async def create_item(item: Item):
-
+    print("processing ...")
     response  = chain.invoke(item.query)
-
+    print("end processing")
     return {"response_str": response, "response_id": 123}
