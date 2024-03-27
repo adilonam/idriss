@@ -28,13 +28,13 @@ with open(file_path, 'rb') as f:
 
 
 
-class Item(BaseModel):
-    user_input: str
+class ChatQuestion(BaseModel):
+    chatQuestion: str
     
 
 @app.post("/v1/")
-async def create_item(item: Item):
+async def create_item(item: ChatQuestion):
     print("processing ...")
-    response  = chain.invoke(item.user_input)
+    response  = chain.invoke(item.chatQuestion)
     print("end processing")
-    return {"message": response, "response_id": 123}
+    return {"chatResponse": response}
